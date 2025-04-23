@@ -7,14 +7,14 @@
 **Led by our Motion Design & AI Content Creation Lecturers:**
 
 **George Korganovi**
-Motion Designer at WINDFOR'S & Lecturer at Miami Ad School Tbilisi
+Motion Designer & Lecturer at CommSchool
 * 15 years of experience in Motion Design and Animation
 * Former Animation Director at Qbitz and Leavingstone
 * Diverse expertise in motion design, VFX, and 3D graphics
 * Worked on visual aspects for mobile games (Beetroot Lab) and VR projects (ORsim VR)
 
 **John Kvezereli**
-Digital Designer & AI Implementation Specialist at Redberry
+Graphic Designer and AI Enthusiast & Lecturer at CommSchool
 * 7 years of experience in digital design
 * Actively mastering and implementing AI tools for the past 4 years
 * Experience at leading advertising agencies including Kraken

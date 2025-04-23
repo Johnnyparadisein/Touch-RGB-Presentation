@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    rect { shape-rendering: crispEdges; }
+  </style>
+  <!-- Robot head -->
+  <rect x="5" y="2" width="6" height="6" fill="#555"/>
+  <!-- Eyes -->
+  <rect x="6" y="3" width="1" height="1" fill="#0ff"/>
+  <rect x="9" y="3" width="1" height="1" fill="#0ff"/>
+  <!-- Mouth -->
+  <rect x="7" y="5" width="2" height="1" fill="#0ff"/>
+  <!-- Antenna -->
+  <rect x="8" y="1" width="1" height="1" fill="#999"/>
+  <!-- Body -->
+  <rect x="4" y="8" width="8" height="4" fill="#555"/>
+  <!-- Arms -->
+  <rect x="3" y="8" width="1" height="3" fill="#999"/>
+  <rect x="12" y="8" width="1" height="3" fill="#999"/>
+  <!-- Legs -->
+  <rect x="5" y="12" width="2" height="2" fill="#999"/>
+  <rect x="9" y="12" width="2" height="2" fill="#999"/>
+</svg> 

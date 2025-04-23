@@ -29,7 +29,7 @@
                 <h1>AI in Animation: A New Creative Era or a Quick Fix?</h1>
                 <h2>An Interactive Masterclass</h2>
                 <p class="title-description">Explore the dynamic intersection of Artificial Intelligence and Motion Design. Is AI a shortcut, or can it genuinely enhance creativity? Witness a live session building a 20-second animation from scratch, guided by your input and powered by AI tools. We'll cover brief crafting, prompt engineering, visual generation, and voiceovers, showcasing how AI can supercharge ideation and workflows while emphasizing the irreplaceable value of human artistic vision.</p>
-                <p class="title-credits">Presented by Touch RGB in collaboration with commschool.</p>
+                <p class="title-credits">Presented by commschool in collaboration with Touch RGB.</p>
             </div>
             <div class="title-slide-logos"> <!-- Container for logos on title slides -->
                 <img src="commschool logo.svg" alt="Commschool Logo" class="logo title-logo commschool-logo">
@@ -43,13 +43,15 @@
             <div class="slide-content">
                 <div class="lecturer-columns">
                     <div class="presenter-info">
+                        <img src="George_.jpg" alt="George Korganovi" class="presenter-image">
                         <h3>George Korganovi</h3>
-                        <p><strong>Motion Designer @ WINDFOR'S & Lecturer @ Miami Ad School Tbilisi</strong></p>
+                        <p><strong>Lecturer @ commschool</strong></p>
                         <p>With 15 years in Motion Design & Animation, George brings deep practical and leadership experience. Formerly Animation Director at Qbitz and Leavingstone, he has overseen diverse project pipelines. His expertise spans motion graphics, VFX, and 3D, contributing to projects from mobile games (Beetroot Lab) to immersive VR medical simulations (ORsim VR).</p>
                     </div>
                     <div class="presenter-info">
+                        <img src="john.jpg" alt="John Kvezereli" class="presenter-image">
                         <h3>John Kvezereli</h3>
-                        <p><strong>Digital Designer & AI Implementation Specialist @ Redberry</strong></p>
+                        <p><strong>Lecturer @ commschool</strong></p>
                         <p>John combines 7 years of digital design with a 4-year focus on integrating AI into creative workflows. With experience at agencies like Kraken, he notably pioneered Georgia Post's first AI-generated postage stamp. He is passionate about bridging traditional design principles with AI's potential to forge innovative and efficient creative solutions.</p>
                     </div>
                 </div>
@@ -58,39 +60,399 @@
 
         <!-- Slide 3: Introduction Presentation -->
         <div class="slide">
-            <h2 class="slide-title"><i class="fa-solid fa-chalkboard-user"></i> Setting the Stage (10 mins)</h2>
-            <div class="slide-content">
-                <p><strong>Presenters:</strong> John Kvezereli & George Korganovi</p>
-                <ul>
-                    <li>
-                        <i class="fa-solid fa-user-tie"></i> <strong>Who We Are:</strong> Brief intros on our creative tech & AI experience.
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-bullseye"></i> <strong>Masterclass Goal:</strong> Live demo of AI-assisted animation, exploring AI + human synergy.
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-lightbulb"></i> <strong>Core Message:</strong> AI is a powerful tool, but lacks intent. Human vision is paramount. AI generates; humans choose.
-                    </li>
-                </ul>
+            <h2 class="slide-title pixel-title"><i class="fa-solid fa-chalkboard-user"></i> Introduction Presentation (10 mins)</h2>
+            
+            <style>
+                /* Custom styles for this slide */
+                .pixel-title {
+                    font-family: 'Press Start 2P', cursive;
+                    text-align: center;
+                    margin-bottom: 20px;
+                    letter-spacing: 1px;
+                    font-size: 1.8em;
+                    color: var(--accent-color);
+                    text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+                }
+                
+                .slide-layout {
+                    display: flex;
+                    flex-direction: column;
+                    height: calc(100% - 50px);
+                    width: 100%;
+                    position: relative;
+                    z-index: 1;
+                }
+                
+                .header-row {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 15px;
+                    padding: 0 10px;
+                }
+                
+                .presenters {
+                    color: var(--accent-color);
+                    font-size: 1.1em;
+                    padding-left: 10px;
+                    border-left: 3px solid var(--accent-color);
+                }
+                
+                .welcome {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                }
+                
+                .welcome-icon {
+                    color: var(--accent-color);
+                    font-size: 1.3em;
+                    animation: pulse 2s infinite;
+                    position: relative;
+                }
+                
+                @keyframes pulse {
+                    0% { opacity: 0.7; }
+                    50% { opacity: 1; }
+                    100% { opacity: 0.7; }
+                }
+                
+                .welcome-text {
+                    font-size: 1.2em;
+                    font-weight: normal;
+                    color: white;
+                    margin: 0;
+                }
+                
+                .content-section {
+                    display: flex;
+                    gap: 20px;
+                    flex: 1;
+                    padding: 0 5px;
+                    margin-bottom: 10px;
+                }
+                
+                .content-box {
+                    flex: 1;
+                    border: 1px solid var(--accent-color);
+                    border-radius: 8px;
+                    background: rgba(0, 50, 0, 0.15);
+                    box-shadow: 0 0 20px rgba(0, 255, 0, 0.05);
+                    padding: 18px;
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                    overflow: hidden;
+                }
+                
+                .content-box::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 3px;
+                    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+                }
+                
+                /* Animated circles */
+                .circle {
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(0, 255, 0, 0.05);
+                    border: 1px solid rgba(0, 255, 0, 0.1);
+                    pointer-events: none;
+                    z-index: 0;
+                }
+                
+                .circle-1 {
+                    width: 150px;
+                    height: 150px;
+                    bottom: -40px;
+                    right: -40px;
+                    animation: float1 15s infinite ease-in-out;
+                }
+                
+                .circle-2 {
+                    width: 80px;
+                    height: 80px;
+                    top: 20px;
+                    right: 30px;
+                    animation: float2 12s infinite ease-in-out;
+                }
+                
+                .circle-3 {
+                    width: 60px;
+                    height: 60px;
+                    bottom: 30px;
+                    left: 20px;
+                    animation: float3 10s infinite ease-in-out;
+                }
+                
+                .circle-4 {
+                    width: 120px;
+                    height: 120px;
+                    top: -30px;
+                    left: -30px;
+                    animation: float1 18s infinite ease-in-out reverse;
+                }
+                
+                .circle-5 {
+                    width: 90px;
+                    height: 90px;
+                    top: 40%;
+                    left: 40%;
+                    animation: float3 20s infinite ease-in-out;
+                    opacity: 0.25;
+                }
+                
+                @keyframes float1 {
+                    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+                    25% { transform: translate(10px, 10px) rotate(5deg); }
+                    50% { transform: translate(5px, 15px) rotate(0deg); }
+                    75% { transform: translate(10px, 5px) rotate(-5deg); }
+                }
+                
+                @keyframes float2 {
+                    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+                    25% { transform: translate(-10px, 5px) rotate(-5deg); }
+                    50% { transform: translate(-5px, 10px) rotate(0deg); }
+                    75% { transform: translate(-10px, -5px) rotate(5deg); }
+                }
+                
+                @keyframes float3 {
+                    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+                    25% { transform: translate(8px, -8px) rotate(10deg); }
+                    50% { transform: translate(0px, 10px) rotate(0deg); }
+                    75% { transform: translate(-8px, -8px) rotate(-10deg); }
+                }
+                
+                .box-title {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    margin-bottom: 15px;
+                    color: white;
+                    position: relative;
+                    z-index: 1;
+                }
+                
+                .title-icon {
+                    font-size: 1.4em;
+                    color: var(--accent-color);
+                }
+                
+                .title-text {
+                    font-size: 1.3em;
+                    font-weight: 500;
+                }
+                
+                .list-item {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 12px;
+                    margin-bottom: 12px;
+                    padding-left: 5px;
+                    position: relative;
+                    z-index: 1;
+                }
+                
+                .list-item:last-child {
+                    margin-bottom: 0;
+                }
+                
+                .item-icon {
+                    color: var(--accent-color);
+                    font-size: 1.1em;
+                    min-width: 20px;
+                }
+                
+                .item-content {
+                    font-size: 1.05em;
+                    line-height: 1.4;
+                }
+                
+                .highlight {
+                    color: var(--accent-color);
+                    font-weight: 500;
+                }
+                
+                .core-container {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    height: 100%;
+                    padding: 5px;
+                    position: relative;
+                    z-index: 1;
+                }
+                
+                .core-title {
+                    text-align: center;
+                    margin-bottom: 20px;
+                    color: white;
+                    font-size: 1.3em;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                }
+                
+                .divider {
+                    height: 2px;
+                    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+                    width: 80%;
+                    margin: 20px auto;
+                    position: relative;
+                    z-index: 1;
+                }
+                
+                .core-message {
+                    text-align: center;
+                    font-size: 1.15em;
+                    line-height: 1.5;
+                    max-width: 95%;
+                    margin: 0 auto;
+                    position: relative;
+                    z-index: 1;
+                    padding: 0 10px;
+                }
+                
+                /* Pulsing circle behind welcome icon */
+                .welcome-icon::before {
+                    content: '';
+                    position: absolute;
+                    width: 35px;
+                    height: 35px;
+                    background: rgba(0, 255, 0, 0.1);
+                    border-radius: 50%;
+                    animation: pulse-circle 2s infinite;
+                    z-index: -1;
+                }
+                
+                @keyframes pulse-circle {
+                    0% { transform: scale(0.8); opacity: 0.3; }
+                    50% { transform: scale(1.2); opacity: 0.5; }
+                    100% { transform: scale(0.8); opacity: 0.3; }
+                }
+                
+                /* Additional background element */
+                .bg-element {
+                    position: absolute;
+                    opacity: 0.1;
+                    z-index: 0;
+                    pointer-events: none;
+                }
+                
+                .bg-grid {
+                    border: 1px solid var(--accent-color);
+                    width: 200px;
+                    height: 200px;
+                    bottom: -100px;
+                    right: 20%;
+                    transform: rotate(30deg);
+                    background: repeating-linear-gradient(
+                        0deg,
+                        transparent,
+                        transparent 20px,
+                        rgba(0, 255, 0, 0.05) 20px,
+                        rgba(0, 255, 0, 0.05) 21px
+                    );
+                }
+            </style>
+            
+            <div class="slide-content full-width">
+                <div class="slide-layout">
+                    <!-- Background elements -->
+                    <div class="bg-element bg-grid"></div>
+                    
+                    <div class="header-row">
+                        <div class="presenters">Presenters: John Kvezereli & George Korganovi</div>
+                        <div class="welcome">
+                            <div class="welcome-icon">
+                                <i class="fa-solid fa-handshake-angle"></i>
+                            </div>
+                            <h3 class="welcome-text">Welcome to our Interactive AI Animation Masterclass</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="content-section">
+                        <!-- Left Box -->
+                        <div class="content-box">
+                            <!-- Animated background circles -->
+                            <div class="circle circle-1"></div>
+                            <div class="circle circle-2"></div>
+                            <div class="circle circle-3"></div>
+                            
+                            <div class="box-title">
+                                <i class="fa-solid fa-users title-icon"></i>
+                                <div class="title-text">Who We Are & Our Goal</div>
+                            </div>
+                            
+                            <div class="list-item">
+                                <i class="fa-solid fa-user-tie item-icon"></i>
+                                <div class="item-content">
+                                    <span class="highlight">Who We Are:</span> Brief intros & roles.
+                                </div>
+                            </div>
+                            
+                            <div class="list-item">
+                                <i class="fa-solid fa-bullseye item-icon"></i>
+                                <div class="item-content">
+                                    <span class="highlight">Masterclass Goal:</span> Live demo of AI-assisted animation, exploring AI + human synergy.
+                                </div>
+                            </div>
+                            
+                            <div class="list-item">
+                                <i class="fa-solid fa-clock item-icon"></i>
+                                <div class="item-content">
+                                    <em>Following this introduction, we'll build a 20-second animation together.</em>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right Box -->
+                        <div class="content-box">
+                            <!-- Animated background circles -->
+                            <div class="circle circle-4"></div>
+                            <div class="circle circle-5"></div>
+                            
+                            <div class="core-container">
+                                <div class="core-title">
+                                    <i class="fa-solid fa-lightbulb title-icon"></i>
+                                    <div>Core Message</div>
+                                </div>
+                                
+                                <div class="divider"></div>
+                                
+                                <p class="core-message">
+                                    AI's power is immense, but creative direction, refinement, and soul come from the human designer.
+                                </p>
+                                
+                                <div class="divider"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Slide 4: AI Spark - Tools -->
         <div class="slide">
-             <h2 class="slide-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Part 1: AI Spark - Tools</h2>
+             <h2 class="slide-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Part 1: The AI Spark - Tools</h2>
              <div class="slide-content">
-                  <p><strong>Led by:</strong> John Kvezereli (Approx. 25 mins total for Part 1)</p>
+                  <p><strong>Led by:</strong> John Kvezereli (Approx. 20 mins total for Part 1)</p>
                   <h3><i class="fa-solid fa-robot"></i> Meet Our AI Co-Pilots</h3>
                  <ul>
                     <li><i class="fa-solid fa-brain"></i> <strong>AI Text & Idea Generation (Poe.com):</strong> Access multiple LLMs (like Claude, GPT) for brainstorming, script refinement, and generating detailed image prompts.</li>
                     <li><i class="fa-solid fa-image"></i> <strong>AI Image & Style Generation (Recraft.ai):</strong> Web-based platform focused on generating and refining stylistically consistent vector art, illustrations, and icons from text prompts. Great for maintaining brand consistency.</li>
                     <li><i class="fa-solid fa-microphone-lines"></i> <strong>Text-to-Speech (TTS) (ElevenLabs):</strong> Converts script text to natural-sounding speech. Offers voice libraries & cloning for specific tones/styles.</li>
                  </ul>
-                 <p><em>(Brief live demo: Poe.com, Recraft.ai, & ElevenLabs web interfaces)</em></p>
+                 <p><em>(Brief live demo of interfaces)</em></p>
              </div>
          </div>
 
-        <!-- NEW Slide 4.5: How AI Models Work -->
+        <!-- Slide 5: How AI Models Work (Keep existing slide - provides useful context) -->
         <div class="slide">
             <h2 class="slide-title"><i class="fa-solid fa-microchip"></i> Under the Hood: How Does AI Create?</h2>
             <div class="slide-content">
@@ -128,193 +490,229 @@
             </div>
         </div>
 
-
-        <!-- Slide 5: AI Spark - Live Visual Generation -->
+        <!-- Slide 6: AI Spark - Live Visual Generation -->
         <div class="slide">
              <h2 class="slide-title"><i class="fa-solid fa-image"></i> Part 1: Live Visual Generation</h2>
              <div class="slide-content">
                  <h3><i class="fa-solid fa-pencil"></i> Crafting with Prompts: The Art of Instruction</h3>
                  <ul>
-                    <li><i class="fa-solid fa-crosshairs"></i> <strong>Goal:</strong> Use Poe.com to brainstorm prompt ideas, then use Recraft.ai to create stylized lecturer portraits & abstract visuals ('AI Potential', 'Human Creativity').</li>
-                    <li><i class="fa-solid fa-lightbulb"></i> <strong>Abstract Example (Recraft.ai):</strong> (Prompt: "Vibrant swirling energy streams representing creative thought, merging with glowing digital circuits, minimalist vector art style, cinematic lighting"). Discuss Recraft's interface for style selection and refinement.</li>
-                    <li><i class="fa-solid fa-portrait"></i> <strong>Character Example (Recraft.ai):</strong> (Prompt: "Portrait of a male digital designer with short brown hair, focused expression, in a modern graphic novel art style, simple neutral background"). Demonstrate style consistency features in Recraft.</li>
-                    <li><i class="fa-solid fa-users-viewfinder"></i> <strong>Audience Choice & Refinement:</strong> Present style options generated by Recraft. Audience/George select direction. Demo Recraft's refinement tools (e.g., changing colors, modifying details).</li>
+                    <li><i class="fa-solid fa-universal-access"></i> <strong>Explain the need:</strong> We require stylized assets and representations of our lecturers for the video.</li>
+                    <li><i class="fa-solid fa-lightbulb"></i> <strong>Generate abstract/thematic visuals:</strong> Create elements representing "AI power" and "amplification" using Recraft.ai. Discuss prompt influence.</li>
+                    <li><i class="fa-solid fa-portrait"></i> <strong>Generate stylized character options:</strong> Explore different art styles for "John" and "George" representations. Discuss variations.</li>
+                    <li><i class="fa-solid fa-users-viewfinder"></i> <strong>Audience Choice & Refinement:</strong> Present style options. Audience/George select direction. Demo Recraft's refinement tools.</li>
                  </ul>
              </div>
         </div>
 
-        <!-- Slide 6: AI Spark - Live Voice-over & Takeaway -->
+        <!-- Slide 7: AI Spark - Live Voice-over & Takeaway -->
         <div class="slide">
              <h2 class="slide-title"><i class="fa-solid fa-microphone"></i> Part 1: Live Voice-over & Takeaway</h2>
              <div class="slide-content">
                  <h3><i class="fa-solid fa-headphones-simple"></i> Giving AI a Voice: Tone & Delivery</h3>
                  <ul>
-                    <li>Using ElevenLabs: Browse voices or use custom clone. Match intended tone (curious/technical vs. confident/assured).</li>
-                    <li>Generate audio for first lines:
+                    <li>Using ElevenLabs: Generate the first part of the script's voiceover.</li>
+                    <li>Voice lines:
                         <ul>
-                            <li><em>"AI… what is this thing anyway?"</em> (Inquisitive tone)</li>
-                            <li><em>"It's about amplifying our capabilities."</em> (Declarative, positive tone)</li>
+                            <li><em>"AI… what is this thing anyway?"</em></li>
+                            <li><em>"It's about amplifying our capabilities."</em></li>
                         </ul>
                     </li>
-                    <li>Demonstrate adjusting settings (stability/similarity) or generating variations.</li>
+                    <li>Demonstrate matching tone and adjusting settings.</li>
                 </ul>
                 <div class="info-box">
-                    <h3><i class="fa-solid fa-person-chalkboard"></i> John's Takeaway: Rapid Exploration</h3>
+                    <h3><i class="fa-solid fa-person-chalkboard"></i> John's Takeaway: AI Speed</h3>
                     <ul>
-                        <li><i class="fa-solid fa-rocket"></i> AI Strength: **Accelerated iteration & style exploration**. Provides diverse visual/audio options faster than manual methods.</li>
-                        <li><i class="fa-solid fa-lightbulb"></i> Impact: Jumpstarts creativity, overcomes 'blank page', explores new avenues. A powerful brainstorming partner.</li>
+                        <li><i class="fa-solid fa-rocket"></i> Emphasize AI's remarkable speed in generating a diverse range of options and stylized assets based on simple prompts.</li>
                     </ul>
                 </div>
              </div>
         </div>
 
-        <!-- Slide 7: Human Rhythm - Asset Integration -->
+        <!-- Slide 8: Human Rhythm - Asset Integration -->
         <div class="slide">
-            <h2 class="slide-title"><i class="fa-solid fa-person-running"></i> Part 2: Human Rhythm - Prep & Polish</h2>
+            <h2 class="slide-title"><i class="fa-solid fa-person-running"></i> Part 2: The Human Rhythm - Prep & Polish</h2>
             <div class="slide-content">
-                <p><strong>Led by:</strong> George Korganovi (Approx. 25 mins total for Part 2)</p>
+                <p><strong>Led by:</strong> George Korganovi (Approx. 20 mins total for Part 2)</p>
                 <h3><i class="fa-solid fa-puzzle-piece"></i> Integrating & Preparing AI Assets</h3>
                 <ul>
-                    <li>Import selected Midjourney images (upscaled, minor cleanup) & abstract visuals into After Effects.</li>
-                    <li>Best Practices for Prepping AI Assets:
-                        <ul>
-                            <li><i class="fa-solid fa-layer-group"></i> <strong>Layering (Photoshop/Illustrator):</strong> Separate elements for complex animation (e.g., character parts for rigging).</li>
-                            <li><i class="fa-solid fa-vector-square"></i> <strong>Resolution/Format:</strong> Check resolution (e.g., Full HD). Use appropriate formats (PNG for transparency). Vectorize if sharp scaling needed.</li>
-                            <li><i class="fa-solid fa-folder-tree"></i> <strong>Project Organization (AE):</strong> Clean project panel (folders for Assets, Comps, etc.) for manageable workflow.</li>
-                        </ul>
-                    </li>
+                    <li>Import selected character designs and abstract visuals into After Effects.</li>
+                    <li>Discuss best practices: Layering (Photoshop/Illustrator), Resolution/Format checks, Project Organization in AE.</li>
                 </ul>
                 <p><em>(Show After Effects interface with imported, organized assets.)</em></p>
             </div>
         </div>
 
-        <!-- Slide 8: Human Rhythm - Motion Design in Action -->
+        <!-- Slide 9: Human Rhythm - Motion Design in Action -->
         <div class="slide">
              <h2 class="slide-title"><i class="fa-solid fa-film"></i> Part 2: Motion Design in Action</h2>
              <div class="slide-content">
                  <h3><i class="fa-solid fa-masks-theater"></i> Animating with Purpose</h3>
                  <ul>
-                    <li><i class="fa-solid fa-child-reaching"></i> <strong>Character Animation:</strong> Simple techniques (Puppet Pin, basic DUIK rigging) for personality, not complex movement.</li>
-                    <li><i class="fa-solid fa-pen-ruler"></i> <strong>Design Refinement & Animation:</strong> Example: Vectorize AI element, animate in AE with keyframes/easing (Graph Editor) or expressions (<code>wiggle()</code>).</li>
-                    <li><i class="fa-solid fa-headphones"></i> <strong>Audio Sync:</strong> Use AE markers for key audio points. Sync visuals (gestures, graphic pulses) precisely.</li>
-                    <li><i class="fa-solid fa-right-left"></i> <strong>Narrative Transition:</strong> Design visual transition (wipe, morph) to bridge AI focus and human vision focus.</li>
+                    <li><i class="fa-solid fa-child-reaching"></i> <strong>Character Animation:</strong> Animate stylized "John" and "George" characters.</li>
+                    <li><i class="fa-solid fa-pen-ruler"></i> <strong>Design Refinement & Animation:</strong> Show refining a static AI element, then animating it with personality.</li>
+                    <li><i class="fa-solid fa-headphones"></i> <strong>Audio Sync:</strong> Integrate the first part of the AI voice-over, synchronizing visuals.</li>
+                    <li><i class="fa-solid fa-right-left"></i> <strong>Narrative Transition:</strong> Create the visual shift for the second half of the video narrative (focus on human vision).</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Slide 9: Human Rhythm - Takeaway -->
+        <!-- Slide 10: Human Rhythm - Takeaway -->
         <div class="slide">
             <h2 class="slide-title"><i class="fa-solid fa-person-chalkboard"></i> Part 2: George's Takeaway</h2>
             <div class="slide-content">
                 <div class="info-box">
                     <h3><i class="fa-solid fa-heart-pulse"></i> The Animator's Touch: Intent & Emotion</h3>
                     <ul>
-                        <li><i class="fa-solid fa-hand-fist"></i> Raw ingredients from AI need **animation principles** (timing, spacing, etc.) to come alive.</li>
-                        <li><i class="fa-solid fa-brain"></i> **Storytelling choices** (pacing, framing) & **animator's intuition** add purpose and coherence.</li>
-                        <li><i class="fa-solid fa-palette"></i> Translating static assets into engaging narrative = human skill (taste, judgment, craft).</li>
+                        <li><i class="fa-solid fa-hand-fist"></i> Highlight how fundamental **motion design principles** and **storytelling choices** elevate raw AI assets into a cohesive, engaging piece with emotional resonance.</li>
+                        <li><i class="fa-solid fa-brain"></i> Animator's intuition transforms assets into narrative.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 10: Synthesis - Final Touches & Screening -->
+        <!-- NEW Slide 11: Video Scenario -->
         <div class="slide">
-            <h2 class="slide-title">Part 3: Synthesis - Assembly & Polish</h2>
+            <h2 class="slide-title"><i class="fa-solid fa-clapperboard"></i> The 20-Second Challenge: Video Scenario</h2>
             <div class="slide-content">
-                <p><strong>Collaborative:</strong> John & George (Approx. 15 mins total)</p>
-                <h3>Bringing It All Together</h3>
+                <h3><i class="fa-regular fa-file-video"></i> Building Our Animation: Scene by Scene</h3>
+                <ol style="list-style-type: decimal; padding-left: 20px;">
+                    <li><strong>(0-2s) Scene 1: The Initial Inquiry</strong>
+                        <br>Visual: Text "AI… what is this thing anyway?" with playful question marks.
+                        <br>VO (George): "AI… what is this thing anyway?"
+                        <br>Sound: Curious, echoing effect.
+                    </li>
+                    <li><strong>(2-5s) Scene 2: Amplifying Power</strong>
+                        <br>Visual: Dynamic energy waves/expanding circles.
+                        <br>VO (John): "It's about amplifying our capabilities."
+                        <br>Sound: Building, energetic effect.
+                    </li>
+                    <li><strong>(5-9s) Scene 3: Rapid Idea Exploration</strong>
+                        <br>Visual: Close-up laptop screen scrolling rapidly with abstract visuals, text, UI.
+                        <br>VO (George): "So we can explore more ideas faster..."
+                        <br>Sound: Fast digital scrolling, clicking.
+                    </li>
+                    <li><strong>(9-13s) Scene 4: Human Vision in Focus</strong>
+                        <br>Visual: Scrolling blurs out, leaving focused silhouette at computer with subtle glow.
+                        <br>VO (John): "...while keeping our human vision at the center."
+                        <br>Sound: Frantic scrolling fades to softer ambient sound.
+                    </li>
+                    <li><strong>(13-16s) Scene 5: The Power of Both</strong>
+                        <br>Visual: Screen splits. Motion design software icons vs. AI tool icons.
+                        <br>VO (John): "The future of motion design isn't either/or..."
+                        <br>Sound: Contrasting sound effect for each side.
+                    </li>
+                    <li><strong>(16-18s) Scene 6: Unity in Motion</strong>
+                        <br>Visual: Dividing line disappears. Icons rotate and intertwine harmoniously.
+                        <br>VO (John & George): "...it's both."
+                        <br>Sound: Sounds blend into a unified rhythm.
+                    </li>
+                    <li><strong>(18-20s) Scene 7: Collaborative Creation</strong>
+                        <br>Visual: Icons settle. Text: "Ready to see what we can create together?" with brief loading bar animation. Logos appear.
+                        <br>VO (John & George): "Ready to see what we can create together?"
+                        <br>Sound: Inviting flourish, subtle loading effect.
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+
+        <!-- Slide 12: Synthesis - Final Touches & Screening -->
+        <div class="slide">
+            <h2 class="slide-title"><i class="fa-solid fa-screwdriver-wrench"></i> Part 3: The Synthesis - Assembly & Screening</h2>
+            <div class="slide-content">
+                <p><strong>Collaborative:</strong> John & George (Approx. 10 mins total)</p>
+                <h3><i class="fa-solid fa-layer-group"></i> Bringing It All Together</h3>
                 <ul>
-                    <li><strong>Final Polish:</strong> Add text overlays (titles/credits). Source background music/SFX (e.g., Epidemic Sound, Artlist) & add subtle sounds (whooshes, tones). Basic audio mixing (VO, music, SFX levels).</li>
-                    <li>(Optional) Add second VO part: <em>"But the real magic happens when human vision guides the spark."</em> & sync.</li>
-                    <li><strong>Final Assembly:</strong> Combine sequences, animations, graphics, audio in AE main timeline. Review ~20s sequence for timing, flow, impact.</li>
+                    <li><strong>Final Polish:</strong> Add titles/credits. Source/add background music/SFX. Basic audio mixing.</li>
+                    <li>(Optional) Add second VO part & sync.</li>
+                    <li><strong>Final Assembly:</strong> Combine sequences in AE main timeline. Review ~20s sequence.</li>
                 </ul>
-                <h3>Screening: The Result</h3>
+                <h3><i class="fa-solid fa-tv"></i> Screening: The Result</h3>
                 <ul>
                     <li>Let's watch! Playing the final animation rendered from After Effects.</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Slide 11: Synthesis - Deconstruction -->
+        <!-- Slide 13: Synthesis - Deconstruction -->
         <div class="slide">
-             <h2 class="slide-title">Part 3: Deconstruction - AI vs. Human</h2>
+             <h2 class="slide-title"><i class="fa-solid fa-magnifying-glass-chart"></i> Part 3: Deconstruction - AI vs. Human</h2>
              <div class="slide-content">
-                 <h3>Analyzing the Collaboration</h3>
+                 <h3><i class="fa-solid fa-user-astronaut"></i><i class="fa-solid fa-person"></i> Analyzing the Collaboration</h3>
                  <ul>
-                    <li><strong>John (AI Contribution):</strong> Pinpoint examples - "This vector style consistency came from using Recraft.ai's style controls." "This background texture originated from the 'vibrant energy streams' prompt in Recraft." "Initial script ideas refined using Poe.com." "Base VO track/tone from ElevenLabs Voice ID 'XYZ'."</li>
-                    <li><strong>George (Human Craft):</strong> Contrast examples - "Notice the anticipation pause before the look up – deliberate timing." "This smooth ease curve on keyframes was custom." "This transition was designed/animated in AE." "Final color grade applied in AE for mood/consistency."</li>
+                    <li><strong>John (AI Contribution):</strong> Pinpoint examples - "This style/asset came from AI." "Initial script/VO options from AI."</li>
+                    <li><strong>George (Human Craft):</strong> Contrast examples - "This timing/easing was a human choice." "This transition/composition designed in AE." "Final color/mood adjusted by human."</li>
                  </ul>
                  <p><em>Goal: Clearly illustrate distinct roles: AI (generation, options) vs. Human (selection, refinement, intent, narrative).</em></p>
              </div>
         </div>
 
-        <!-- Slide 12: Synthesis - Core Message & Future -->
+        <!-- Slide 14: Synthesis - Core Message & Future -->
         <div class="slide">
-             <h2 class="slide-title">Part 3: Core Message & Future Vision</h2>
+             <h2 class="slide-title"><i class="fa-solid fa-message"></i> Part 3: Core Message & Future Vision</h2>
              <div class="slide-content">
                  <h3>The Human Director in the Age of AI</h3>
                  <ul>
-                     <li><strong>Reiterate Core Message:</strong> AI = powerful amplifier, assistant, co-pilot. Accelerates ideation/generation. Human artist/designer = indispensable **director** (vision, choices, narrative, soul). AI provides paint; human holds brush & decides masterpiece.</li>
+                     <li><strong>Reiterate Core Message:</strong> AI = powerful co-pilot. Human artist/designer = indispensable director (vision, choices, narrative, soul).</li>
                  </ul>
                  <h3>Future Outlook: Evolving Collaboration</h3>
                   <ul>
-                    <li>Future trends: Tighter AI integration in creative software (e.g., Firefly), AI handling technical tasks (rotoscoping, rigging suggestions), real-time interactive AI feedback, AI agents for complex tasks.</li>
-                    <li>Emphasis: Goal is augmentation, not replacement. Freeing creators for strategy, creativity, storytelling.</li>
+                    <li>Discuss potential future evolutions of this collaborative human+AI workflow in creative industries.</li>
                  </ul>
              </div>
         </div>
 
-        <!-- Slide 13: Resources -->
+        <!-- Slide 15: Resources (Keep existing - still relevant) -->
         <div class="slide">
             <h2 class="slide-title"><i class="fa-solid fa-book"></i> Helpful AI & Creative Resources</h2>
             <div class="slide-content">
                 <p>Explore tools relevant to AI in creative workflows (late 2024):</p>
                 <ul>
-                    <li><a href="https://poe.com/" target="_blank">Poe.com</a>: Platform providing access to multiple LLMs (ChatGPT, Claude, etc.) for text generation, brainstorming, and prompt assistance.</li>
-                    <li><a href="https://recraft.ai/" target="_blank">Recraft.ai</a>: AI platform for consistent vector art, illustrations, icons, 3D graphics. Good for brand assets.</li>
-                    <li><a href="https://elevenlabs.io/" target="_blank">ElevenLabs</a>: High-quality TTS with voice cloning. Great for VO, character voices, prototypes.</li>
-                    <li><a href="https://openai.com/chatgpt/" target="_blank">ChatGPT (OpenAI)</a> / <a href="https://claude.ai/" target="_blank">Claude (Anthropic)</a> / <a href="https://gemini.google.com/" target="_blank">Gemini (Google)</a>: (Also accessible via Poe) Foundational LLMs for various text tasks.</li>
-                    <li><a href="https://runwayml.com/" target="_blank">RunwayML</a>: Suite of AI video tools (text-to-video, generative fill, auto-rotoscoping).</li>
-                    <li><a href="https://krea.ai/" target="_blank">Krea AI</a>: Real-time generative canvas for interactive image creation/enhancement.</li>
-                    <li><a href="https://www.adobe.com/sensei/generative-ai/firefly.html" target="_blank">Adobe Firefly</a>: Integrated AI in Creative Cloud (Photoshop, Illustrator) for generative fill, text-to-vector, etc. Designed for commercial safety.</li>
-                    <li><a href="https://www.adobe.com/products/aftereffects.html" target="_blank">Adobe After Effects</a>: Industry-standard motion graphics/VFX software for integrating & refining AI assets.</li>
+                    <li><a href="https://poe.com/" target="_blank" rel="noopener noreferrer">Poe.com</a>: Platform providing access to multiple LLMs (ChatGPT, Claude, etc.) for text generation, brainstorming, and prompt assistance.</li>
+                    <li><a href="https://recraft.ai/" target="_blank" rel="noopener noreferrer">Recraft.ai</a>: AI platform for consistent vector art, illustrations, icons, 3D graphics. Good for brand assets.</li>
+                    <li><a href="https://elevenlabs.io/" target="_blank" rel="noopener noreferrer">ElevenLabs</a>: High-quality TTS with voice cloning. Great for VO, character voices, prototypes.</li>
+                    <li><a href="https://openai.com/chatgpt/" target="_blank" rel="noopener noreferrer">ChatGPT (OpenAI)</a> / <a href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Claude (Anthropic)</a> / <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">Gemini (Google)</a>: (Also accessible via Poe) Foundational LLMs for various text tasks.</li>
+                    <li><a href="https://runwayml.com/" target="_blank" rel="noopener noreferrer">RunwayML</a>: Suite of AI video tools (text-to-video, generative fill, auto-rotoscoping).</li>
+                    <li><a href="https://krea.ai/" target="_blank" rel="noopener noreferrer">Krea AI</a>: Real-time generative canvas for interactive image creation/enhancement.</li>
+                    <li><a href="https://www.adobe.com/sensei/generative-ai/firefly.html" target="_blank" rel="noopener noreferrer">Adobe Firefly</a>: Integrated AI in Creative Cloud (Photoshop, Illustrator) for generative fill, text-to-vector, etc. Designed for commercial safety.</li>
+                    <li><a href="https://www.adobe.com/products/aftereffects.html" target="_blank" rel="noopener noreferrer">Adobe After Effects</a>: Industry-standard motion graphics/VFX software for integrating & refining AI assets.</li>
                 </ul>
                 <p><em>Note: AI landscape evolves rapidly! Continuous exploration, critical thinking & experimentation are key.</em></p>
             </div>
         </div>
 
-        <!-- Slide 14: Q&A -->
+        <!-- Slide 16: Q&A -->
         <div class="slide">
              <h2 class="slide-title"><i class="fa-solid fa-comments"></i> Q&A (5 mins)</h2>
              <div class="slide-content">
-                <p>Ask us anything about:</p>
+                <p>Open floor for audience questions directed at John or George regarding tools, process, or concepts.</p>
                 <ul>
-                    <li><i class="fa-solid fa-robot"></i> AI tools (Poe, Recraft, ElevenLabs, etc.) - tips, limitations?</li>
-                    <li><i class="fa-solid fa-film"></i> Motion design workflow (AE techniques, integration)?</li>
-                    <li><i class="fa-solid fa-scale-balanced"></i> Ethical considerations (copyright, style mimicry, jobs)?</li>
-                    <li><i class="fa-solid fa-sack-dollar"></i> Practical hurdles (cost, learning curve, integration)?</li>
-                    <li><i class="fa-solid fa-arrow-trend-up"></i> Future trends for AI in creative fields?</li>
-                    <li><i class="fa-solid fa-circle-question"></i> Anything else related to the masterclass!</li>
+                    <li>AI tools (tips, limitations?)</li>
+                    <li>Motion design workflow (integration)?</li>
+                    <li>Ethical considerations?</li>
+                    <li>Practical hurdles?</li>
+                    <li>Future trends?</li>
+                    <li>Anything else!</li>
                 </ul>
                 <p style="margin-top: 20px;"><em><i class="fa-solid fa-hand"></i> Please raise your hand or use chat to ask.</em></p>
             </div>
         </div>
 
-        <!-- Slide 15: Thank You -->
+        <!-- Slide 17: Thank You -->
         <div class="slide title-slide thank-you-slide">
             <div class="title-slide-content thank-you-content"> <!-- Added thank-you-content class -->
                 <h1>Thank You!</h1>
                 <h2>Let's Connect & Continue the Conversation</h2>
 
                 <div class="contact-info">
-                    <p><i class="fa-solid fa-globe"></i> Find us online: <a href="https://touch.ge/" target="_blank">touch.ge</a></p>
+                    <p><i class="fa-solid fa-globe"></i> Find us online: <a href="https://commschool.ge/" target="_blank" rel="noopener noreferrer">commschool.ge</a></p>
                     <!-- Add Email Here (Optional) -->
                     <!-- <p><i class="fa-solid fa-envelope"></i> Email: your.email@example.com</p> -->
                     <div class="social-links">
                         <!-- Add Social Links Here -->
-                        <a href="#" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="#" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" target="_blank" aria-label="Facebook" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" target="_blank" aria-label="LinkedIn" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" target="_blank" aria-label="Instagram" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
                         <!-- Add more as needed -->
                     </div>
                 </div>
@@ -322,7 +720,7 @@
                 <!-- Placeholder for QR Code -->
                 <!-- <div class="qr-code-placeholder">[QR Code Here]</div> -->
 
-                <p class="final-credits">Presented by Touch RGB in collaboration with commschool.</p>
+                <p class="final-credits">Presented by commschool in collaboration with Touch RGB.</p>
             </div>
             <div class="title-slide-logos"> <!-- Container for logos on title slides -->
                 <img src="commschool logo.svg" alt="Commschool Logo" class="logo title-logo commschool-logo">

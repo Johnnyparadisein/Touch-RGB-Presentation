@@ -496,6 +496,20 @@ body {
     width: 47%; /* Adjust width considering gap */
 }
 
+.presenter-info {
+    margin-bottom: 30px;
+}
+
+.presenter-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
 .presenter-info h3 {
     font-family: var(--font-heading); /* Use heading font */
     font-size: 1.3em; /* Adjusted size */
@@ -528,10 +542,11 @@ body {
 
 .slide-content a:hover,
 .slide-content a:focus {
-    color: var(--bg-darker); /* Dark text on hover */
-    background-color: var(--accent-color); /* Accent background on hover */
+    color: var(--bg-darker); /* Dark text on hover/focus */
+    background-color: var(--accent-color); /* Accent background on hover/focus */
     text-decoration: none; /* Keep underline off */
     box-shadow: 0 0 8px rgba(var(--accent-color-rgb), 0.3); /* Subtle glow */
+    outline: none; /* Optional: remove default focus outline if custom style is sufficient */
 }
 
 /* Code block styling */

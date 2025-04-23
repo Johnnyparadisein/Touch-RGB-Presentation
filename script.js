@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const dot = document.createElement('div');
             dot.classList.add('dot');
             dot.addEventListener('click', () => goToSlide(index));
+            dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
             dotNav.appendChild(dot);
         });
         updateDotNav(); // Set initial active dot
@@ -64,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const dots = dotNav.querySelectorAll('.dot');
         dots.forEach((dot, idx) => {
             dot.classList.toggle('active', idx === currentSlideIndex);
+            dot.setAttribute('aria-current', idx === currentSlideIndex ? 'true' : 'false');
         });
     }
 

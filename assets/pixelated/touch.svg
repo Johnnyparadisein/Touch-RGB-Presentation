@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    rect { shape-rendering: crispEdges; }
+  </style>
+  <!-- Screen -->
+  <rect x="2" y="2" width="12" height="8" fill="#333"/>
+  <rect x="3" y="3" width="10" height="6" fill="#0af"/>
+  <!-- Finger -->
+  <rect x="9" y="9" width="1" height="1" fill="#ffc"/>
+  <rect x="9" y="10" width="1" height="1" fill="#ffc"/>
+  <rect x="8" y="11" width="3" height="1" fill="#ffc"/>
+  <rect x="8" y="12" width="3" height="1" fill="#ffc"/>
+  <rect x="8" y="13" width="3" height="1" fill="#ffc"/>
+  <!-- Hand -->
+  <rect x="5" y="11" width="3" height="3" fill="#ffc"/>
+  <!-- Ripple effect -->
+  <rect x="9" y="4" width="1" height="1" fill="#fff" opacity="0.7"/>
+  <rect x="8" y="5" width="3" height="1" fill="#fff" opacity="0.5"/>
+  <rect x="7" y="6" width="5" height="1" fill="#fff" opacity="0.3"/>
+</svg> 
