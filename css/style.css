@@ -1,0 +1,1085 @@
+/* Update Accent Color Variable */
+:root {
+    --accent-color: #00FF25; /* Touch RGB neon green accent */
+    --accent-color-rgb: 0, 255, 37; /* Added RGB version */
+    --accent-red: #FF0033;
+    --bg-dark: #000000;
+    --bg-darker: #101010; /* Slightly lighter than pure black */
+    --bg-darkest: #000000;
+    --text-light: #e8e8e8; /* Slightly brighter base text */
+    --text-muted: #999999; /* Slightly lighter muted text */
+    --font-base: 'Lato', sans-serif;
+    --font-heading: 'Poppins', sans-serif; /* Use Poppins for more headings */
+    --font-pixel: 'Press Start 2P', cursive;
+}
+
+/* Apply border-box globally for easier sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-base); /* Use variable */
+    margin: 0;
+    padding: 0 20px 20px 20px; /* Remove top padding, keep others */
+    color: var(--text-light);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align container to the top */
+    min-height: 100vh;
+    overflow: hidden; /* Still prevent body scrollbars */
+    /* Update gradient to static RGB + Black */
+    background: linear-gradient(135deg, #FF0000 0%, #00FF00 33%, #0000FF 66%, #000000 100%);
+    /* background-size: 400% 400%; Removed for static background */
+    /* animation: gradientShift 25s ease infinite; Removed animation */
+}
+
+/* Presentation Container */
+.presentation-container {
+    width: 100%; /* Take available width up to max-width */
+    max-width: 1400px;
+    height: 85vh;
+    max-height: 900px;
+    position: relative;
+    /* background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%); Removed gradient */
+    background-color: var(--bg-darker); /* Set solid dark background */
+    box-shadow: 0 10px 50px rgba(0,0,0,0.7); /* Softer, larger shadow */
+    border-radius: 12px; /* Slightly softer radius */
+    overflow: hidden; /* Clip slides */
+    margin: auto; /* Ensure margin contributes to centering if flex properties were insufficient */
+}
+
+/* Slide Structure & Transition */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 50px 70px; /* Adjusted padding */
+    box-sizing: border-box;
+    background: linear-gradient(145deg, var(--bg-darker) 0%, var(--bg-darkest) 100%); /* Subtle gradient */
+    opacity: 0;
+    transform: scale(0.95); /* Start slightly scaled down */
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out; /* Smoother fade/scale */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Default: Center content vertically */
+    align-items: center; /* Default: Center content horizontally */
+    text-align: center; /* Default: Center text */
+    z-index: 2; /* Above body gradient */
+    color: var(--text-light);
+    pointer-events: none; /* Prevent interaction when not active */
+    line-height: 1.6; /* Default line height */
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1); /* Scale to full size */
+    z-index: 3;
+    pointer-events: auto; /* Allow interaction when active */
+}
+
+.slide.previous {
+    /* State for slide moving out */
+    opacity: 0;
+    transform: scale(1.03); /* Adjusted scale */
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Override defaults for non-title slides */
+.slide:not(.title-slide) {
+    justify-content: center; /* Align content block center vertically */
+    align-items: center; /* Align content block center horizontally */
+    text-align: left; /* Keep text alignment left by default within the block */
+    padding-top: 60px; /* Consistent top padding for title */
+    padding-bottom: 40px; /* Ensure some bottom padding */
+}
+
+/* Standard Slide Elements */
+.slide-title {
+    font-family: var(--font-pixel); /* Use variable */
+    font-size: 2.4em; /* Slightly reduced */
+    margin-top: 0; /* Keep this */
+    margin-bottom: 35px; /* Increased spacing below title */
+    color: var(--accent-color);
+    line-height: 1.3;
+    letter-spacing: 0.5px; /* Slight spacing for pixel font */
+    width: 100%; /* Ensure title takes full width for alignment */
+}
+
+.slide-content {
+    padding-right: 10px; /* Add some padding for scrollbar */
+    width: 100%;
+    max-width: 980px; /* Adjusted max-width */
+    overflow-y: auto; /* Allow vertical scrolling if content overflows */
+    max-height: calc(100% - 80px); /* Adjust max-height (100% of slide height minus top/bottom padding/title space) */
+}
+
+/* Custom Scrollbar Styling (Webkit) */
+.slide-content::-webkit-scrollbar { width: 8px; }
+.slide-content::-webkit-scrollbar-track { background: #333; border-radius: 4px; }
+.slide-content::-webkit-scrollbar-thumb { background-color: var(--accent-color); border-radius: 4px; border: 2px solid #333; }
+
+/* Typography within Slide Content */
+.slide-content h3 {
+     font-family: var(--font-heading); /* Use variable */
+     color: #ffffff;
+     font-size: 1.4em; /* Increased h3 size */
+     font-weight: 600; /* Poppins Semi-bold */
+     margin-top: 25px; /* Increased margin */
+     margin-bottom: 15px; /* Increased margin */
+}
+
+.slide-content p,
+.slide-content li {
+    font-size: 1.0em; /* Increased base font size */
+    margin-bottom: 0.8em; /* Consistent bottom margin */
+}
+
+.slide-content p {
+    color: var(--text-light); /* Use main light text color */
+    line-height: 1.7; /* Increased line-height */
+    max-width: 98%; /* Adjust if needed */
+}
+
+.slide-content ul {
+    list-style: none;
+    padding-left: 10px; /* Reduced base padding for ul */
+    color: var(--text-light); /* Match paragraph color */
+    max-width: 98%; /* Adjust if needed */
+    margin-top: 0.5em;
+}
+
+.slide-content li {
+    padding-left: 28px; /* Adjust padding for icon space */
+    position: relative; /* Needed for absolute positioning of ::before if used */
+    margin-bottom: 0.6em; /* Slightly tighter list item spacing */
+    line-height: 1.65; /* Adjust line height */
+}
+
+/* Position icon using negative margin relative to li padding */
+.slide-content li > i:first-child {
+     position: absolute; /* Position icon relative to li */
+     left: 0px;
+     top: 0.25em; /* Adjust vertical alignment */
+     margin-right: 8px; /* Adjust space after icon */
+     width: 1.4em; /* Adjust icon container width */
+     text-align: center; /* Center icon within its space */
+     color: var(--accent-color); /* Use accent color for icons */
+     font-size: 0.9em; /* Slightly smaller icons */
+}
+
+/* Specific adjustments for nested lists */
+.slide-content ul ul {
+     margin-top: 8px;
+     margin-bottom: 8px; /* Add bottom margin */
+     padding-left: 25px; /* Adjust nested indent */
+     /* Use standard disc bullets - removed custom style */
+     color: var(--text-light); /* Ensure nested text color */
+     font-size: 0.95em; /* Slightly smaller nested list */
+     list-style-type: disc; /* Explicitly set disc */
+}
+
+.slide-content ul ul li {
+      margin-bottom: 0.5em; /* Consistent nested spacing */
+      padding-left: 0; /* Reset padding */
+      position: static; /* Override parent relative if needed */
+      list-style-type: disc; /* Ensure bullets show */
+}
+/* Remove custom ::before for nested lists if it exists */
+.slide-content ul ul li::before {
+    content: none;
+}
+/* Hide icon from parent li if standard bullet is shown */
+.slide-content ul ul li > i:first-child {
+      display: none; /* Hide icons in nested lists */
+}
+
+
+/* Adjustments for definition lists */
+.slide-content dl {
+    margin-bottom: 1.5em;
+}
+
+.slide-content dt {
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 0.3em;
+    font-size: 1.05em;
+}
+
+.slide-content dd {
+    margin-left: 20px;
+    margin-bottom: 0.8em;
+    padding-left: 10px;
+    border-left: 2px solid rgba(var(--accent-color-rgb), 0.4); /* Subtle left border */
+    color: var(--text-light);
+}
+
+
+/* Special Slide Types & Content */
+.slide.title-slide {
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Center text */
+}
+
+/*
+.slide.active .slide-content ul > li {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+}
+*/
+
+/* Navigation Controls */
+.navigation {
+    position: absolute;
+    bottom: 30px; /* Increased bottom spacing */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 15px; /* Spacing between buttons */
+}
+
+.navigation button {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white */
+    color: var(--text-light);
+    border: 1px solid rgba(var(--accent-color-rgb), 0.7); /* Accent border */
+    padding: 10px 25px;
+    border-radius: 20px; /* Pill shape */
+    cursor: pointer;
+    font-family: var(--font-pixel); /* Added Pixel Font */
+    font-size: 14px; /* Adjusted font size */
+    font-weight: 600; /* Semi-bold */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.navigation button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    border-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: none;
+    transform: none;
+}
+
+.navigation button:hover:not(:disabled) {
+    background-color: rgba(var(--accent-color-rgb), 0.8); /* Accent color on hover */
+    color: var(--bg-dark);
+    transform: translateY(-2px); /* Slight lift */
+    box-shadow: 0 4px 10px rgba(var(--accent-color-rgb), 0.4);
+}
+
+.navigation button:active:not(:disabled) {
+    transform: translateY(0px); /* Press down */
+    background-color: rgba(var(--accent-color-rgb), 0.9);
+    box-shadow: 0 2px 5px rgba(var(--accent-color-rgb), 0.3);
+}
+
+/* Progress Indicator */
+#progressIndicator {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    font-size: 16px;
+    color: var(--text-muted);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Progress Bar Styling */
+.progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px; /* Height of the bar */
+    background-color: rgba(255, 255, 255, 0.1); /* Track color */
+    width: 100%;
+    z-index: 6; /* Above content, below top indicator */
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: var(--accent-color); /* Fill color */
+    width: 0; /* Initial width */
+    transition: width 0.3s ease-out; /* Smooth transition */
+    border-radius: 0 3px 3px 0; /* Rounded right edge */
+}
+
+/* Dot Navigation */
+.dot-nav {
+    position: absolute;
+    top: 10px; /* Position dots below the progress bar */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 7; /* Above progress bar */
+    display: flex;
+    gap: 10px; /* Spacing between dots */
+}
+
+.dot-nav .dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.3); /* Inactive dot color */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.dot-nav .dot.active {
+    background-color: var(--accent-color); /* Active dot color */
+    transform: scale(1.2); /* Slightly larger active dot */
+    box-shadow: 0 2px 5px rgba(var(--accent-color-rgb), 0.4);
+}
+
+.dot-nav .dot:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.6); /* Hover color for inactive dots */
+    transform: scale(1.1);
+}
+.dot-nav .dot.active:hover {
+    /* Optional: subtle effect on active hover, or none */
+    filter: brightness(1.1);
+}
+
+
+/* Logo Styling */
+.presentation-container > .logo { /* Select logos directly under container */
+    position: absolute;
+    z-index: 11; /* Increased z-index to be above navigation */
+    width: 60px; /* Default width */
+    height: auto;
+    transition: transform 0.3s ease, opacity 0.5s ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4)); /* Subtle shadow */
+}
+
+.presentation-container > .logo:hover {
+    transform: scale(1.1);
+}
+
+.presentation-container > .commschool-logo {
+    bottom: 20px;
+    left: 20px;
+}
+.presentation-container > .touch-logo {
+    bottom: 20px;
+    right: 20px;
+}
+
+.presentation-container > .logo.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* Title Slide Specific Logo Styling */
+.title-slide-logos {
+    position: absolute; /* Position relative to the slide */
+    bottom: 40px; /* Adjust spacing from bottom */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px; /* Adjust spacing between logos */
+    z-index: 12; /* Ensure they are above slide background & nav */
+}
+
+.title-slide-logos::before {
+    content: '';
+    position: absolute;
+    bottom: -25px; /* Position below the logos */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%; /* Width of the gradient line */
+    height: 2px; /* Thickness of the line */
+    background: linear-gradient(90deg, transparent, rgba(var(--accent-color-rgb), 0.7), transparent);
+    opacity: 0.7; /* Slightly transparent */
+}
+
+
+.title-slide-logos .logo { /* Target logos specifically within this container */
+    margin: 0 20px; /* Spacing around each logo */
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+    width: 160px; /* Increased width */
+    height: auto;
+}
+
+.title-slide-logos .logo:hover {
+    transform: scale(1.15);
+}
+
+/* No absolute positioning needed here if using flexbox */
+.title-slide-logos .commschool-logo,
+.title-slide-logos .touch-logo {
+    position: static; /* Override absolute positioning from general logo style */
+    bottom: auto;
+    left: auto;
+    right: auto;
+}
+
+
+/* Title Slide Specifics */
+.title-slide {
+    background: radial-gradient(circle at center, var(--bg-darker) 0%, var(--bg-darkest) 70%),
+                linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.1) 0%, rgba(0,0,0,0) 50%); /* Subtle accent gradient overlay */
+}
+
+.title-slide-content {
+    max-width: 1000px; /* Limit width on larger screens */
+    margin: 0 auto; /* Center */
+    position: relative; /* Needed for pseudo-elements if any */
+    z-index: 4; /* Above background effects */
+    padding-bottom: 80px; /* Add some padding back if logos get too close */
+}
+
+.title-slide h1 {
+    font-family: var(--font-pixel); /* Use variable */
+    font-size: 2.5em; /* Increased size */
+    color: var(--accent-color); /* Use variable */
+    margin-bottom: 15px; /* Spacing below H1 */
+    line-height: 1.2;
+    letter-spacing: 1px; /* More spacing for pixel font */
+    text-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.5), /* Inner glow */
+                 0 0 20px rgba(var(--accent-color-rgb), 0.3); /* Outer glow */
+}
+
+.title-slide h2 {
+    font-family: var(--font-heading); /* Use variable */
+    font-size: 1.3em; /* Adjusted size */
+    color: var(--text-light);
+    margin-bottom: 30px; /* Spacing below H2 */
+    font-weight: 400; /* Poppins Regular */
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.title-slide .title-description,
+.title-slide .title-credits {
+    font-size: 1.0em; /* Slightly larger text */
+    color: var(--text-muted); /* Use variable */
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 800px; /* Limit width of text blocks */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title-slide .title-credits {
+    font-style: italic;
+    font-size: 0.9em; /* Smaller for credits */
+    margin-top: 30px; /* More space above credits */
+}
+
+/* Lecturer Columns */
+.lecturer-columns {
+    display: flex;
+    justify-content: center; /* Center columns horizontally */
+    align-items: flex-start; /* Align items to the top */
+    text-align: center; /* Center content within the columns overall */
+    gap: 40px; /* Space between columns */
+    margin-top: 40px; /* Space above the columns */
+    margin-bottom: 80px; /* Pushes logos down */
+}
+
+.lecturer-columns .presenter-info {
+    flex: 1; /* Allow columns to grow equally */
+    max-width: 350px; /* Max width per column */
+}
+
+.presenter-info {
+    text-align: center;
+}
+
+.presenter-image {
+    width: 150px; /* Control image size */
+    height: 150px;
+    border-radius: 50%; /* Circular image */
+    object-fit: cover; /* Crop image nicely */
+    margin-bottom: 15px;
+    border: 3px solid var(--accent-color); /* Accent border */
+    box-shadow: 0 4px 15px rgba(var(--accent-color-rgb), 0.3); /* Glow effect */
+}
+
+.presenter-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2em;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.presenter-info p {
+    font-size: 0.9em;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+.presenter-info p strong {
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+
+/* Styling Links, Code, etc. */
+.slide-content a,
+.contact-info a,
+.social-links a {
+    color: var(--accent-color);
+    text-decoration: none; /* Remove underline */
+    font-weight: 600; /* Make links slightly bolder */
+    border-bottom: 1px dashed rgba(var(--accent-color-rgb), 0.6); /* Subtle dashed underline */
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+    padding-bottom: 1px; /* Tiny space for underline */
+}
+
+.slide-content a:hover,
+.contact-info a:hover,
+.social-links a:hover {
+    color: #fff; /* Brighter color on hover */
+    border-bottom-color: rgba(255, 255, 255, 0.9); /* White dashed underline */
+    text-decoration: none; /* Ensure no default underline appears */
+}
+
+
+.slide-content code {
+    background-color: rgba(255, 255, 255, 0.08); /* Slightly lighter background */
+    padding: 0.2em 0.5em;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace; /* Monospace font */
+    font-size: 0.9em; /* Slightly smaller code font */
+    color: #f0f0f0; /* Slightly brighter code text */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle border */
+    /* Prevent long code lines from breaking layout */
+    word-wrap: break-word;
+    white-space: pre-wrap; /* Allows wrapping but preserves whitespace */
+}
+
+/* Diffusion Animation Specific Styles */
+.diffusion-animation-container {
+    text-align: center; /* Center the content */
+    margin-top: 30px; /* Space above animation */
+    position: relative; /* Needed for positioning text over animation */
+    padding-bottom: 10px; /* Space below animation */
+}
+
+.diffusion-animation-container p {
+    position: relative; /* To allow z-index */
+    z-index: 1; /* Place text above the animation */
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.diffusion-animation {
+    width: 150px; /* Size of the animation area */
+    height: 100px;
+    margin: 15px auto 10px; /* Center and add space */
+    position: relative;
+    overflow: hidden; /* Contain the effect */
+    background-color: rgba(var(--accent-color-rgb), 0.05); /* Faint background */
+    border-radius: 8px;
+    border: 1px solid rgba(var(--accent-color-rgb), 0.2);
+}
+
+.diffusion-animation::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px; /* Starting size */
+    height: 10px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: diffuse 3s infinite ease-out;
+    opacity: 0;
+}
+
+@keyframes diffuse {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(15); /* Expand significantly */
+        opacity: 0;
+    }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    .slide { padding: 45px 55px; } /* Adjusted padding */
+    .slide-title { font-size: 2.2em; } /* Responsive size */
+    .title-slide h1 { font-size: 2.3em; } /* Responsive size */
+    .title-slide h2 { font-size: 1.2em; } /* Responsive size */
+}
+
+@media (max-width: 992px) {
+    .slide-title { font-size: 1.9em; } /* Responsive size */
+    .title-slide h1 { font-size: 2.0em; } /* Responsive size */
+    .title-slide h2 { font-size: 1.1em; } /* Responsive size */
+    .lecturer-columns { flex-direction: column; gap: 20px; }
+    .lecturer-columns .presenter-info { width: 100%; }
+    /* Dim the gradient on smaller screens if it was too bright */
+    /* body::before { opacity: 0.8; } */
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px; /* Reduce body padding */
+        align-items: center; /* Center container vertically too on smaller screens */
+        padding-top: 20px; /* Add some top padding back */
+    }
+    .presentation-container {
+        height: auto; /* Let height adjust to content */
+        min-height: 80vh; /* Ensure minimum height */
+        max-height: none; /* Remove max-height */
+        border-radius: 8px; /* Slightly smaller radius */
+        width: 95%; /* Slightly more width */
+        box-shadow: 0 5px 30px rgba(0,0,0,0.6);
+    }
+    .slide { padding: 35px 20px; } /* Adjusted padding */
+    .slide-title { font-size: 1.7em; margin-bottom: 25px; } /* Responsive size */
+    .title-slide h1 { font-size: 1.8em; } /* Responsive size */
+    .title-slide h2 { font-size: 1.0em; margin-bottom: 25px; } /* Responsive size */
+    .navigation { bottom: 15px; gap: 10px; }
+    .navigation button { padding: 8px 16px; font-size: 13px; }
+    #progressIndicator { font-size: 14px; }
+    .dot-nav { top: 8px; gap: 8px; } /* Closer to progress bar */
+    .dot-nav .dot { width: 8px; height: 8px; }
+    .presentation-container > .commschool-logo { width: 55px; bottom: 15px; left: 15px; } /* Adjusted size/position */
+    .presentation-container > .touch-logo { width: 55px; bottom: 15px; right: 15px; } /* Adjusted size/position */
+    /* body::before { display: none; } */ /* Hide gradient on mobile if desired */
+}
+
+@media (max-width: 480px) {
+    .slide-title { font-size: 1.4em; } /* Responsive size */
+    .title-slide h1 { font-size: 1.5em; } /* Responsive size */
+    .title-slide h2 { font-size: 0.9em; } /* Responsive size */
+     .navigation button { font-size: 12px; padding: 6px 12px; }
+     #progressIndicator { font-size: 13px; }
+     .slide-content p, .slide-content li { font-size: 0.95em; } /* Slightly smaller text on mobile */
+}
+
+
+/* Animated Grid Background */
+/*.presentation-container::after { /* Changed from body::before */
+/*    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(var(--accent-color-rgb), 0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(var(--accent-color-rgb), 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 1; /* Below slides but above main container background */
+/*    opacity: 0.5; /* Start subtle */
+/*    animation: gridPan 40s linear infinite;
+/*    pointer-events: none; /* Allow clicks through */
+/*}*/
+
+
+.presentation-container > .slide.title-slide:first-child, /* More specific selector */
+.presentation-container > .slide.thank-you-slide {
+    /* Apply dynamic colorful animated swirl background only to title and thank-you slides */
+    position: relative; /* Needed for the ::after pseudo-element */
+    overflow: hidden; /* Keep swirl contained */
+}
+.presentation-container > .slide.title-slide:first-child::after,
+.presentation-container > .slide.thank-you-slide::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%; /* Large enough to cover */
+    height: 200%;
+    background: conic-gradient(
+        from 0deg at 50% 50%,
+        #FF0000, #FFFF00, #00FF00, #00FFFF, #0000FF, #FF00FF, #FF0000
+    );
+    opacity: 0.1; /* Very subtle */
+    filter: blur(150px); /* Heavy blur for soft effect */
+    transform: translate(-50%, -50%);
+    animation: rotateSwirl 60s linear infinite;
+    z-index: 0; /* Behind slide content */
+}
+
+@keyframes rotateSwirl {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes gridPan {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; } /* Adjust values for speed/direction */
+}
+/* Thank You Slide Specifics */
+.thank-you-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center everything horizontally */
+    justify-content: center; /* Center everything vertically */
+    height: 100%; /* Take full slide height */
+    text-align: center;
+}
+
+/* Reuse title styles but adjust */
+.thank-you-slide h1,
+.thank-you-slide h2 {
+    font-family: var(--font-pixel); /* Use pixel font for both */
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.5),
+                 0 0 20px rgba(var(--accent-color-rgb), 0.3);
+    margin: 0 auto; /* Center block level elements */
+}
+
+.thank-you-slide h1 {
+    font-size: 3em; /* Larger main heading */
+    margin-bottom: 15px;
+}
+
+.thank-you-slide h2 {
+    font-size: 1.5em; /* Sub-heading size */
+    font-family: var(--font-heading); /* Use heading font for subtitle */
+    color: var(--text-light); /* Regular text color */
+    font-weight: 400;
+    margin-bottom: 35px; /* More space below subtitle */
+    max-width: 700px; /* Limit width */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.contact-info {
+    margin-bottom: 30px;
+}
+
+.contact-info p {
+    font-size: 1.0em;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    line-height: 1.6;
+    display: flex; /* Align icon and text */
+    align-items: center;
+    justify-content: center; /* Center items within the paragraph */
+    gap: 10px; /* Space between icon and text */
+}
+
+.contact-info p i {
+    font-size: 1.2em; /* Slightly larger icons */
+    color: var(--accent-color); /* Use accent color */
+    width: 20px; /* Fixed width for alignment */
+    text-align: center;
+    vertical-align: middle; /* Align icon better */
+}
+
+/* Override general link styles slightly if needed */
+.thank-you-slide .contact-info p a,
+.thank-you-slide .social-links a {
+    border-bottom: 1px dashed rgba(var(--accent-color-rgb), 0.8); /* Slightly stronger underline */
+    font-weight: normal; /* Normal weight for contact/social */
+}
+
+.thank-you-slide .contact-info p a:hover,
+.thank-you-slide .social-links a:hover {
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
+.thank-you-slide .social-links {
+    margin-bottom: 40px; /* Space below social links */
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.thank-you-slide .social-links a {
+    font-size: 1.8em; /* Larger social icons */
+    color: var(--text-muted); /* Start muted */
+    transition: color 0.3s ease, transform 0.3s ease;
+    border-bottom: none; /* Remove underline */
+    padding: 5px; /* Clickable area */
+}
+
+.thank-you-slide .social-links a:hover,
+.thank-you-slide .social-links a:focus {
+    color: var(--accent-color); /* Accent color on hover */
+    transform: scale(1.2) rotate(-5deg); /* Fun hover effect */
+}
+
+.thank-you-slide .final-credits {
+    font-size: 0.85em;
+    color: var(--text-muted);
+    margin-top: 30px; /* Space above credits */
+    line-height: 1.5;
+    font-style: italic;
+}
+
+/* Reuse Title Slide Logos on Thank You Slide */
+.thank-you-slide .title-slide-logos {
+    position: absolute; /* Keep absolute positioning relative to slide */
+    bottom: 30px; /* Adjust position as needed */
+    width: 100%;
+}
+.thank-you-slide .title-slide-logos::before {
+    bottom: -20px; /* Adjust line position */
+}
+
+/* Diffusion Model Animation Styles */
+.diffusion-demo {
+  width: 100%;
+  height: 180px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.diffusion-noise {
+  width: 150px;
+  height: 150px;
+  background-color: #000;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.diffusion-noise::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml,<svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+  opacity: 1;
+  animation: diffusion-process 10s ease-in-out infinite;
+}
+
+.diffusion-steps {
+  position: absolute;
+  top: 10px;
+  left: 180px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.diffusion-step {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: step-appear 10s ease-in-out infinite;
+}
+
+.step-number {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.step-text {
+  font-size: 14px;
+  color: #fff;
+}
+
+.diffusion-step:nth-child(1) {
+  animation-delay: 1s;
+}
+
+.diffusion-step:nth-child(2) {
+  animation-delay: 3s;
+}
+
+.diffusion-step:nth-child(3) {
+  animation-delay: 5s;
+}
+
+.diffusion-step:nth-child(4) {
+  animation-delay: 7s;
+}
+
+.emerging-image {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-image: linear-gradient(45deg, var(--accent-color), #00ff00);
+  clip-path: polygon(50% 10%, 90% 50%, 50% 90%, 10% 50%);
+  opacity: 0;
+  border-radius: 4px;
+  animation: image-emerge 10s ease-in-out infinite;
+}
+
+@keyframes diffusion-process {
+  0%, 10% {
+    opacity: 1;
+    filter: contrast(1) brightness(1);
+  }
+  30% {
+    opacity: 0.9;
+    filter: contrast(0.9) brightness(1.1);
+  }
+  60% {
+    opacity: 0.5;
+    filter: contrast(0.7) brightness(1.2);
+  }
+  90%, 100% {
+    opacity: 0.1;
+    filter: contrast(0.5) brightness(1.3);
+  }
+}
+
+@keyframes image-emerge {
+  0%, 20% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  40% {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+  70% {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+  90%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes step-appear {
+  0%, 5% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  10%, 25% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  30%, 100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Pixel noise animation (pixelated pattern) */
+.noise-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(15, 1fr);
+}
+
+.noise-dot {
+  background-color: rgba(255, 255, 255, 0.5);
+  animation: noise-flicker 0.5s infinite;
+}
+
+@keyframes noise-flicker {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: var(--random-opacity, 0.3);
+  }
+}
+
+/* Layout for Slide 5 */
+.layout-slide-5 .slide-content > ul > li {
+    margin-bottom: 2em; /* Add more space between main points */
+}
+
+.layout-slide-5 .slide-content > ul > li:not(:last-child) {
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid rgba(var(--accent-color-rgb), 0.2);
+}
+
+.layout-slide-5 .slide-content > ul > li > ul {
+    padding-top: 0.8em; /* Space below the h4/main li text */
+}
+
+.layout-slide-5 .info-box {
+    background-color: rgba(var(--accent-color-rgb), 0.1);
+    border: 1px solid rgba(var(--accent-color-rgb), 0.3);
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 1em;
+    font-style: italic;
+}
+
+@media (min-width: 769px) { /* Apply two-column layout on larger screens */
+    .layout-slide-5 .slide-content > ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two equal columns */
+        gap: 40px; /* Space between columns */
+        align-items: start; /* Align items at the top of their cell */
+    }
+
+    .layout-slide-5 .slide-content > ul > li:last-child {
+        grid-column: 1 / -1; /* Make the last item span both columns */
+        border-bottom: none; /* Remove border from last item */
+        padding-bottom: 0;
+    }
+
+     .layout-slide-5 .slide-content > ul > li {
+        border-bottom: none; /* Remove bottom border when in columns */
+        padding-bottom: 0;
+    }
+}
+
+
+/* Animated Grid Background */
+/*.presentation-container::after { /* Changed from body::before */
+/*    content: '';
+
+/* Added Styling for QR Code on Thank You Slide */
+.qr-code-thankyou {
+    display: block;
+    width: 150px; /* Adjust size as needed */
+    height: auto;
+    margin: 20px auto 30px; /* Top, Auto L/R, Bottom margins */
+    border: 3px solid var(--accent-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(var(--accent-color-rgb), 0.2);
+}
+
+/* Reuse Title Slide Logos on Thank You Slide */
+.thank-you-slide .title-slide-logos {
+    position: absolute; /* Keep absolute positioning relative to slide */
+    bottom: 30px; /* Adjust position as needed */
+    width: 100%;
+}
+.thank-you-slide .title-slide-logos::before {
+    bottom: -20px; /* Adjust line position */
+} 
